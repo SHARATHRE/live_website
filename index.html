@@ -4,7 +4,10 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Login</title>
+    <title>Login & Register</title>
+    <script src="https://code.jquery.com/jquery-3.6.0.min.js"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery-validate/1.19.3/jquery.validate.min.js"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery-validate/1.19.3/additional-methods.min.js"></script>
     <!-- Include Bootstrap CSS and your custom CSS -->
     <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.5.2/css/bootstrap.min.css">
     <style>
@@ -21,7 +24,7 @@
             width: 100%;
             margin: auto;
             max-width: 525px;
-            min-height: 545px;
+            min-height: 590px;
             border-radius: 80px;
             position: relative;
             background-image: linear-gradient(blueviolet, blueviolet, blueviolet);
@@ -176,6 +179,18 @@
         .input:focus {
             outline: 2px solid blueviolet;
         }
+
+        .login .error,
+        .sign-up-form .error {
+            color: rgb(238, 75, 43);
+            margin-left: 0%;
+            margin-bottom: 3%;
+        }
+
+        .sign-up-admin-form .error {
+            color: rgb(238, 75, 43);
+            margin-left: 0%;
+        }
     </style>
 </head>
 
@@ -185,89 +200,88 @@
             <div class="login-box align-items-center">
                 <div class="login-snip">
                     <h4 class="mb-5 text-white font-weight-bolder font-italic text-uppercase">Login and sign up</h4>
-                    <input id="tab-1" type="radio" name="tab" class="sign-in" checked><label for="tab-1"
-                        class="tab">User</label>
-                    <input id="tab-2" type="radio" name="tab" class="sign-up"><label for="tab-2"
-                        class="tab">Admin</label>
+                    <input id="tab-1" type="radio" name="tab" class="sign-in" checked><label for="tab-1" class="tab">User</label>
+                    <input id="tab-2" type="radio" name="tab" class="sign-up"><label for="tab-2" class="tab">Admin</label>
                     <input id="tab-3" type="radio" name="tab" class="sign-up-admin"><label for="tab-3" class="tab">Sign
                         Up</label>
 
                     <div class="login-space">
                         <div class="login">
-                            <!-- User login form here -->
-                            <div class="group">
-                                <label for="Email" class="label">Email</label>
-                                <input id="Email" type="text" class="input user_email" placeholder="Enter your Email">
-                            </div>
-                            <div class="group">
-                                <label for="pass" class="label">Password</label>
-                                <input id="pass" type="password" class="input user_pass" data-type="password"
-                                    placeholder="Enter your password">
-                            </div>
-                            <div class="group">
-                                <input type="submit" class="button user_log" value="Sign In">
-                            </div>
-                            <div class="hr"></div>
-                            <div class="foot">
-                                <a href="#">Forgot Password?</a>
-                            </div>
+                            <form action="" id="user_log">
+                                <!-- User login form here -->
+                                <div class="group">
+                                    <label for="Email" class="label">Email</label>
+                                    <input id="Email" name="Email" type="text" class="input user_email" placeholder="Enter your Email">
+                                </div>
+                                <div class="group">
+                                    <label for="pass" class="label">Password</label>
+                                    <input id="pass" name="pass" type="password" class="input user_pass" data-type="password" placeholder="Enter your password">
+                                </div>
+                                <div class="group">
+                                    <!-- <input type="submit" class="button user_log" value="Sign In"> -->
+                                    <button type="submit" class="button user_log">Sign In</button>
+                                </div>
+                                <div class="hr"></div>
+                                <div class="foot">
+                                    <a href="#">Forgot Password?</a>
+                                </div>
+                            </form>
                         </div>
                         <div class="sign-up-form">
-                            <!-- Admin login form here -->
-                            <div class="group">
-                                <label for="admin_email" class="label">Admin Email</label>
-                                <input id="admin_email" type="text" class="input admin_email"
-                                    placeholder="Enter your Admin Email">
-                            </div>
-                            <div class="group">
-                                <label for="admin_pass" class="label">Password</label>
-                                <input id="admin_pass" type="password" class="input admin_pass" data-type="password"
-                                    placeholder="Enter your password">
-                            </div>
-                            <div class="group">
-                                <input type="submit" class="button admin_log" value="Sign In">
-                            </div>
-                            <div class="hr"></div>
-                            <div class="foot">
-                                <a href="#">Forgot Password?</a>
-                            </div>
+                            <form action="" id="admin_log">
+                                <!-- Admin login form here -->
+                                <div class="group">
+                                    <label for="admin_email" class="label">Admin Email</label>
+                                    <input id="admin_email" name="admin_email" type="text" class="input admin_email" placeholder="Enter your Admin Email">
+                                </div>
+                                <div class="group">
+                                    <label for="admin_pass" class="label">Password</label>
+                                    <input id="admin_pass" name="admin_pass" type="password" class="input admin_pass" data-type="password" placeholder="Enter your password">
+                                </div>
+                                <div class="group">
+                                    <!-- <button type="submit" class="button admin_log" value="Sign In"> -->
+                                    <button type="submit" class="button admin_log">Sign In</button>
+                                </div>
+                                <div class="hr"></div>
+                                <div class="foot">
+                                    <a href="#">Forgot Password?</a>
+                                </div>
+                            </form>
                         </div>
                         <div class="sign-up-admin-form" style="display: none;">
-                            <!-- Admin sign-up form here -->
-                            <div class="group">
-                                <label for="admin_signup_email" class="label">Email</label>
-                                <input id="admin_signup_email" type="text" class="input admin_signup_email"
-                                    placeholder="Enter your Email">
-                            </div>
-                            <div class="group">
-                                <label for="admin_signup_pass" class="label">Password</label>
-                                <input id="admin_signup_pass" type="password" class="input admin_signup_pass"
-                                    data-type="password" placeholder="Enter your password">
-                            </div>
-                            <div class="group">
-                                <label for="admin_signup_confirm_pass" class="label">Confirm Password</label>
-                                <input id="admin_signup_confirm_pass" type="password"
-                                    class="input admin_signup_confirm_pass" data-type="password"
-                                    placeholder="Confirm your password">
-                            </div>
-                            <div class="group">
-                                <input type="submit" class="button admin_signup" value="Sign Up">
-                            </div>
-                            <div style="margin: 20px 0 20px 0;height: 2px;background: rgba(255, 255, 255, .2);"
-                                class="hr_"></div>
-                            <div class="foot">
-                                <a href="#">Already have an account? Sign In</a>
-                            </div>
+                            <form action="" id="sign_up">
+                                <!-- Admin sign-up form here -->
+                                <div class="group">
+                                    <label for="admin_signup_email" class="label">Email</label>
+                                    <input id="admin_signup_email" name="admin_signup_email" type="text" class="input admin_signup_email" placeholder="Enter your Email">
+                                </div>
+                                <div class="group">
+                                    <label for="admin_signup_pass" class="label">Password</label>
+                                    <input id="admin_signup_pass" name="admin_signup_pass" type="password" class="input admin_signup_pass" data-type="password" placeholder="Enter your password">
+                                </div>
+                                <div class="group">
+                                    <label for="admin_signup_confirm_pass" class="label">Confirm Password</label>
+                                    <input id="admin_signup_confirm_pass" name="admin_signup_confirm_pass" type="password" class="input admin_signup_confirm_pass" data-type="password" placeholder="Confirm your password">
+                                </div>
+                                <div class="group">
+                                    <!-- <input type="submit" class="button admin_signup" value="Sign Up"> -->
+                                    <button type="submit" class="button admin_signup">Sign In</button>
+
+                                </div>
+                                <div style="margin: 20px 0 10px 0;height: 2px;background: rgba(255, 255, 255, .2);" class="hr_"></div>
+                                <div class="foot">
+                                    <a href="#">Already have an account? Sign In</a>
+                                </div>
+                            </form>
                         </div>
                     </div>
                 </div>
             </div>
         </div>
     </div>
-    <script src="https://code.jquery.com/jquery-3.5.1.min.js"></script>
-    <script src="https://maxcdn.bootstrapcdn.com/bootstrap/4.5.2/js/bootstrap.min.js"></script>
+
     <script>
-        $(document).ready(function () {
+        $(document).ready(function() {
             const userTab = $('.sign-in');
             const adminTab = $('.sign-up');
             const signUpAdminTab = $('.sign-up-admin');
@@ -300,6 +314,83 @@
 
             // Event listener for sign-up admin tab
             signUpAdminTab.change(toggleForms);
+
+
+            $("#user_log").validate({
+                rules: {
+                    Email: {
+                        required: true,
+                        email: true
+                    },
+                    pass: {
+                        required: true
+                    }
+                },
+                messages: {
+                    Email: {
+                        required: "Please enter your email address",
+                        email: "Please enter a valid email address"
+                    },
+                    pass: {
+                        required: "Please enter your password"
+                    }
+                }
+            });
+
+            // Add validation rules for the admin login form
+            $("#admin_log").validate({
+                rules: {
+                    admin_email: {
+                        required: true,
+                        email: true
+                    },
+                    admin_pass: {
+                        required: true
+                    }
+                },
+                messages: {
+                    admin_email: {
+                        required: "Please enter your admin email address",
+                        email: "Please enter a valid admin email address"
+                    },
+                    admin_pass: {
+                        required: "Please enter your admin password"
+                    }
+                }
+
+            });
+
+            // Add validation rules for the admin sign-up form
+            $("#sign_up").validate({
+                rules: {
+                    admin_signup_email: {
+                        required: true,
+                        email: true
+                    },
+                    admin_signup_pass: {
+                        required: true,
+                        minlength: 6
+                    },
+                    admin_signup_confirm_pass: {
+                        required: true,
+                        equalTo: "#admin_signup_pass"
+                    }
+                },
+                messages: {
+                    adminSignUpEmail: {
+                        required: "Please enter your admin email address",
+                        email: "Please enter a valid admin email address"
+                    },
+                    adminSignUpPassword: {
+                        required: "Please enter a password",
+                        minlength: "Password must be at least 6 characters"
+                    },
+                    admin_signup_confirm_pass: {
+                        required: "Please confirm your password",
+                        equalTo: "Passwords do not match"
+                    }
+                }
+            });
         });
     </script>
 
