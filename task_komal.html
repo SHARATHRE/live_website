@@ -1,0 +1,262 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Login</title>
+    <!-- Include Bootstrap CSS and your custom CSS -->
+    <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.5.2/css/bootstrap.min.css">
+    <style>
+        body {
+            margin: 0;
+            color: #6a6f8c;
+            /* background: #938e8e; */
+            /* background-image: url("purple-background.webp") */
+            background-image: linear-gradient(30deg, blueviolet, blueviolet, blue);
+            background-size: cover;
+            background-repeat: no-repeat;
+            font: 600 16px/18px 'Open Sans', sans-serif;
+            min-height: 82vh;
+        }
+
+        .login-box {
+            width: 100%;
+            margin: auto;
+            max-width: 525px;
+            min-height: 480px;
+            border-radius: 80px;
+            position: relative;
+            background-image: linear-gradient(blueviolet, blueviolet, blueviolet);
+            box-shadow: 0 12px 15px 0 rgba(0, 0, 0, .24), 0 17px 50px 0 rgba(0, 0, 0, .19);
+        }
+
+        .login-snip {
+            width: 100%;
+            height: 100%;
+            border-radius: 80px;
+            position: absolute;
+            padding: 20px 70px 50px 70px;
+            background: rgba(0, 77, 77, .9);
+        }
+
+        /* rotation form */
+        .login-snip .login,
+        .login-snip .sign-up-form {
+            top: 0;
+            left: 0;
+            right: 0;
+            bottom: 0;
+            position: absolute;
+            transform: rotateY(105deg);
+            backface-visibility: hidden;
+            transition: all .4s linear;
+        }
+
+        .login-snip .sign-in,
+        .login-snip .sign-up,
+        .login-space .group .check {
+            display: none;
+        }
+
+        .login-snip .tab,
+        .login-space .group .label,
+        .login-space .group .button {
+            text-transform: uppercase;
+        }
+
+        /* header user and admin */
+        .login-snip .tab {
+            font-size: 22px;
+            cursor: pointer;
+            margin-right: 15px;
+            padding-bottom: 5px;
+            margin: 0 15px 10px 0;
+            display: inline-block;
+            border-bottom: 2px solid transparent;
+        }
+
+        .login-snip .sign-in:checked+.tab,
+        .login-snip .sign-up:checked+.tab {
+            color: #fff;
+            border-bottom: 3px solid blueviolet;
+        }
+
+        .login-space {
+            min-height: 345px;
+            position: relative;
+            perspective: 1000px;
+            transform-style: preserve-3d;
+        }
+
+        .login-space .group {
+            margin-bottom: 15px;
+        }
+
+        .login-space .group .label,
+        .login-space .group .input,
+        .login-space .group .button {
+            width: 100%;
+            color: #fff;
+            display: block;
+        }
+
+        .login-space .group .input,
+        .login-space .group .button {
+            border: none;
+            padding: 15px 20px;
+            border-radius: 25px;
+            background: rgba(255, 255, 255, .1);
+        }
+
+        .login-space .group input[data-type="password"] {
+            /* text-security: circle; */
+            -webkit-text-security: circle;
+        }
+
+        .login-space .group .label {
+            color: #aaa;
+            font-size: 12px;
+        }
+
+        .login-space .group .button {
+            background: #1161ee;
+        }
+
+        .login-space .group label .icon {
+            width: 15px;
+            height: 15px;
+            border-radius: 2px;
+            position: relative;
+            display: inline-block;
+            background: rgba(255, 255, 255, .1);
+        }
+
+        .login-space .group .check:checked+label .icon:before {
+            transform: scale(1) rotate(90deg);
+        }
+
+        .login-space .group .check:checked+label .icon:after {
+            transform: scale(1) rotate(-90deg);
+        }
+
+        .login-snip .sign-in:checked+.tab+.sign-up+.tab+.login-space .login {
+            transform: rotate(0);
+        }
+
+        .login-snip .sign-up:checked+.tab+.login-space .sign-up-form {
+            transform: rotate(0);
+        }
+
+        a {
+            color: white;
+            text-decoration: none
+        }
+
+        a:hover {
+            color: grey;
+            text-decoration: none
+        }
+
+
+        .hr {
+            height: 2px;
+            margin: 30px 0 30px 0;
+            background: rgba(255, 255, 255, .2);
+        }
+
+        .foot {
+            text-align: center;
+        }
+
+        .card {
+            /* width: 500px;
+            left: 100px; */
+            margin-top: 9%;
+            background: transparent;
+
+        }
+
+        ::placeholder {
+            color: #b3b3b3;
+        }
+
+        .input:focus {
+            outline: 2px solid blueviolet;
+        }
+    </style>
+</head>
+
+<body>
+
+    <div class="container-fluid">
+        <!-- <div class="row"> -->
+        <!-- <div class="col mx-auto p-0"> -->
+        <div class="card mx-auto border-0">
+            <div class="login-box align-items-center">
+                <div class="login-snip">
+                    <h2 class="mb-5 text-white font-weight-bolder font-italic text-uppercase">Login</h2>
+                    <input id="tab-1" type="radio" name="tab" class="sign-in" checked><label for="tab-1"
+                        class="tab">User</label>
+                    <input id="tab-2" type="radio" name="tab" class="sign-up"><label for="tab-2"
+                        class="tab">Admin</label>
+                    <div class="login-space">
+                        <div class="login">
+                            <div class="group">
+                                <label for="user" class="label">Email</label>
+                                <input id="Email" type="text" class="input user_email" placeholder="Enter your Email">
+                            </div>
+                            <div class="group">
+                                <label for="pass" class="label">Password</label>
+                                <input id="pass" type="password" class="input user_pass" data-type="password"
+                                    placeholder="Enter your password">
+                            </div>
+
+                            <div class="group">
+                                <input type="submit" class="button user_log" value="Sign In">
+                            </div>
+                            <div class="hr"></div>
+                            <div class="foot">
+                                <a href="#">Forgot Password?</a>
+                            </div>
+                        </div>
+                        <div class="sign-up-form">
+                            <div class="group">
+                                <label for="user" class="label">Admin Email</label>
+                                <input id="user" type="text" class="input admin_email"
+                                    placeholder="Enter your Admin Email">
+                            </div>
+                            <div class="group">
+                                <label for="pass" class="label">Password</label>
+                                <input id="pass" type="password" class="input admin_pass" data-type="password"
+                                    placeholder="Enter your password">
+                            </div>
+
+                            <div class="group">
+                                <input type="submit" class="button admin_log" value="Sign In">
+                            </div>
+                            <div class="hr"></div>
+                            <div class="foot">
+                                <a href="#">Forgot Password?</a>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+        <!-- </div> -->
+        <!-- </div> -->
+
+    </div>
+
+    <script src="https://code.jquery.com/jquery-3.5.1.min.js"></script>
+    <script src="https://maxcdn.bootstrapcdn.com/bootstrap/4.5.2/js/bootstrap.min.js"></script>
+
+    <script>
+
+
+    </script>
+
+</body>
+
+</html>
