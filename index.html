@@ -264,45 +264,45 @@
             </div>
         </div>
     </div>
-
+    <script src="https://code.jquery.com/jquery-3.5.1.min.js"></script>
+    <script src="https://maxcdn.bootstrapcdn.com/bootstrap/4.5.2/js/bootstrap.min.js"></script>
     <script>
-        document.addEventListener('DOMContentLoaded', function () {
-            const userTab = document.querySelector('.sign-in');
-            const adminTab = document.querySelector('.sign-up');
-            const signUpAdminTab = document.querySelector('.sign-up-admin');
-            const userForm = document.querySelector('.login');
-            const adminForm = document.querySelector('.sign-up-form');
-            const signUpAdminForm = document.querySelector('.sign-up-admin-form');
+        $(document).ready(function () {
+            const userTab = $('.sign-in');
+            const adminTab = $('.sign-up');
+            const signUpAdminTab = $('.sign-up-admin');
+            const userForm = $('.login');
+            const adminForm = $('.sign-up-form');
+            const signUpAdminForm = $('.sign-up-admin-form');
 
             // Function to toggle the user, admin, and sign-up forms
             function toggleForms() {
-                if (userTab.checked) {
-                    userForm.style.display = 'block';
-                    adminForm.style.display = 'none';
-                    signUpAdminForm.style.display = 'none';
-                } else if (adminTab.checked) {
-                    userForm.style.display = 'none';
-                    adminForm.style.display = 'block';
-                    signUpAdminForm.style.display = 'none';
-                } else if (signUpAdminTab.checked) {
-                    userForm.style.display = 'none';
-                    adminForm.style.display = 'none';
-                    signUpAdminForm.style.display = 'block';
+                if (userTab.is(':checked')) {
+                    userForm.css('display', 'block');
+                    adminForm.css('display', 'none');
+                    signUpAdminForm.css('display', 'none');
+                } else if (adminTab.is(':checked')) {
+                    userForm.css('display', 'none');
+                    adminForm.css('display', 'block');
+                    signUpAdminForm.css('display', 'none');
+                } else if (signUpAdminTab.is(':checked')) {
+                    userForm.css('display', 'none');
+                    adminForm.css('display', 'none');
+                    signUpAdminForm.css('display', 'block');
                 }
             }
 
             // Event listener for user tab
-            userTab.addEventListener('change', toggleForms);
+            userTab.change(toggleForms);
 
             // Event listener for admin tab
-            adminTab.addEventListener('change', toggleForms);
+            adminTab.change(toggleForms);
 
             // Event listener for sign-up admin tab
-            signUpAdminTab.addEventListener('change', toggleForms);
+            signUpAdminTab.change(toggleForms);
         });
     </script>
-    <script src="https://code.jquery.com/jquery-3.5.1.min.js"></script>
-    <script src="https://maxcdn.bootstrapcdn.com/bootstrap/4.5.2/js/bootstrap.min.js"></script>
+
 </body>
 
 </html>
